@@ -1,0 +1,14 @@
+{
+  "name": "booking-web-auto",
+  "version": "1.0.0",
+  "description": "a repo to build-up automation framework for booking hotel web",
+  "license": "ISC",
+  "author": "nlmhanh110",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {},
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3"
+  }
+}

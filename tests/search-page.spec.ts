@@ -1,5 +1,6 @@
 import test, { expect } from "@playwright/test";
 import { HomePage, SearchPanel } from "../pages/home-page";
+import { SearchTypeTab } from "../enums/home-page";
 
 let homePage: HomePage;
 let searchPanel: SearchPanel;
@@ -43,5 +44,15 @@ test.describe("Search Page Tests", { tag: "@search" }, () => {
         "text=Please enter the name of a country, city, airport, neighborhood, landmark, or property to proceed"
       )
     ).toBeVisible();
+  });
+
+  test('User can search home and apts by selecting "Homes & Apts" tab', async ({ page }) => {
+    await searchPanel
+      .selectSearchTab(SearchTypeTab.HOME_AND_APTS)
+      .then((s) => s.fillDestination("Hanoi"))
+      .then((s) => s.selectCheckInCheckOutDate("2026-01-04", "2026-01-23"))
+      .then((s) => s.addAdult())
+      .then((s) => s.clickSearchButton());
+    expect(page.url()).toContain("activities");
   });
 });

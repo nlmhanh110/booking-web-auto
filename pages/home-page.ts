@@ -1,5 +1,6 @@
 import { expect } from "@playwright/test";
 import { SearchPanelLocators } from "../locators/home-page";
+import { SearchTypeTab } from "../enums/home-page";
 
 export class HomePage {
   page: any;
@@ -102,6 +103,11 @@ export class SearchPanel extends HomePage {
 
   public async clickOccupancyButton() {
     await this.page.click(SearchPanelLocators.BTN_OCCUPANCY);
+    return this;
+  }
+
+  public async selectSearchTab(tabName: SearchTypeTab) {
+    await this.page.click(tabName.valueOf());
     return this;
   }
 }
